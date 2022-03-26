@@ -1,0 +1,1 @@
+INSERT INTO account(id, sum) VALUES (default, 2022);
