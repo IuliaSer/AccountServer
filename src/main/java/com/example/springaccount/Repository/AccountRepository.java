@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
-//    @Modifying
-//    @Query("update Account a set a.sum = ?1 where a.id = 1")
-//    Account update(int sumToAdd);
+    @Modifying
+    @Query("update Account a set a.sum = ?1 where a.id = 1")
+    void update(int sumToAdd);
 }

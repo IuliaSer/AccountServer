@@ -16,13 +16,17 @@ public class AccountController {
     AccountService accountService;
 
     @PostMapping(value = "/transfer",
-        produces = { MediaType.APPLICATION_JSON_VALUE,
-                MediaType.APPLICATION_XML_VALUE},
-            consumes = { MediaType.APPLICATION_JSON_VALUE,
-                    MediaType.APPLICATION_XML_VALUE})
+        produces = { MediaType.APPLICATION_JSON_VALUE},
+            consumes = { MediaType.APPLICATION_JSON_VALUE,})
     @ResponseBody
-    public ResponseEntity<Account> transfer(@RequestBody Account account) {
-        return new ResponseEntity(accountService.save(account), HttpStatus.OK);
+    public int transfer(@RequestBody Integer sumToAdd) {
+        Account account = accountService.findById(1).get();
+        Account newAccount = accountService.save(new Account(1, (account.getSum() + sumToAdd)));
+        return newAccount.getSum();
     }
 
+//    @ResponseBody
+//    public void transfer(@RequestBody Integer sumToAdd) {
+//        accountService.update(sumToAdd);
+//    }
 }
