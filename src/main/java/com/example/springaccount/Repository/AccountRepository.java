@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
     @Modifying
-    @Query("update Account a set a.sum = ?1 where a.id = 1")
+    @Query(value = "update Account a set a.sum = ?1 where a.id = 1")
     void update(int sumToAdd);
 }
